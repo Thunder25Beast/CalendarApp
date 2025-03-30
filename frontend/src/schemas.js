@@ -1,7 +1,7 @@
 // src/schemas.js
 import { z } from "zod";
 
-export const EVENT_CATEGORIES = ["tech", "sports", "cultural", "academic", "other"];
+export const EVENT_CATEGORIES = ["ERC", "TL", "AERO", "CHEMETL", "other"];
 
 export const insertEventSchema = z.object({
   title: z.string().min(1, "Title is required"),

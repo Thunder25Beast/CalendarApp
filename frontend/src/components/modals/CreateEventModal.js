@@ -91,10 +91,10 @@ export default function CreateEventModal({ isOpen, onClose, onSubmit }) {
               onChange={(e) => setCategory(e.target.value)}
               required
             >
-              <option value="tech">Tech</option>
-              <option value="sports">Sports</option>
-              <option value="cultural">Cultural</option>
-              <option value="academic">Academic</option>
+              <option value="ERC">ERC</option>
+              <option value="TL">TL</option>
+              <option value="AERO">AERO</option>
+              <option value="CHEMETL">CHEMETL</option>
               <option value="other">Other</option>
             </select>
           </div>

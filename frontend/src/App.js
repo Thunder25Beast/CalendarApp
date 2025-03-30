@@ -137,13 +137,14 @@ export default function App() {
               onDayClick={(date) => console.log("Day clicked", date)}
               onEventClick={handleEventClick}
               isLoading={false}
+              onCreateEvent={handleCreateEvent}  // Pass the handler here
+
             />
           )}
           {/* Add other views (week, day, list) if needed */}
         </main>
       </div>
       
-      {/* Modal for Creating an Event */}
       <CreateEventModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 

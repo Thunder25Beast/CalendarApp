@@ -31,7 +31,9 @@ export default function Sidebar({ activeView, onViewChange, upcomingEvents, onEv
             <p className="text-sm text-slate-600 mb-1">
               <strong>Time:</strong> {formatTime(selectedEvent.startTime)} - {formatTime(selectedEvent.endTime)}
             </p>
+            <p className="text-sm text-slate-600 mb-1"><strong>Club:</strong> {selectedEvent.category}</p>
             <p className="text-sm text-slate-600 mb-1"><strong>Location:</strong> {selectedEvent.location}</p>
+
             <p className="text-sm text-slate-600"><strong>Description:</strong> {selectedEvent.description}</p>
           </div>
         )}

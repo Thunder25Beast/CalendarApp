@@ -6,7 +6,7 @@ import { Skeleton } from "../ui/skeleton";
 import { Button } from "../ui/button";
 import { formatTime } from "../../lib/calendar-utils";
 
-export default function MonthView({ weeks, onDayClick, onEventClick, isLoading }) {
+export default function MonthView({ weeks, onDayClick, onEventClick, isLoading, onCreateEvent  }) {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const categoryColorMap = {
     ERC: "bg-blue-500",
@@ -63,17 +63,18 @@ export default function MonthView({ weeks, onDayClick, onEventClick, isLoading }
               >
                 {format(day.date, "d")}
               </span>
+              {/* For debugging, the Plus icon is always visible by ensuring opacity is set to 100 and a contrasting text color */}
               <Button
                 variant="ghost"
-                size="sm"
-                className="text-xs bg-slate-200 hover:bg-slate-300 rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                size="icon"
+                className="text-xs bg-slate-200 hover:bg-slate-300 rounded-full w-5 h-5 flex items-center justify-center opacity-100"
                 onClick={(e) => {
                   e.stopPropagation();
-                  onDayClick(day.date);
+                  onCreateEvent(day.date);
                 }}
               >
-                <Plus className="h-3 w-3" />
-              </Button>
+                <Plus className="h-3 w-3 text-black" />
+              </Button> 
             </div>
             <div className="space-y-1">
               {day.events.slice(0, 3).map((event) => (
