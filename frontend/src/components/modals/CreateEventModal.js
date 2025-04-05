@@ -1,21 +1,25 @@
-// src/components/modals/CreateEventModal.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function CreateEventModal({ isOpen, onClose, onSubmit }) {
-  // Always call hooks at the top, regardless of isOpen
+export default function CreateEventModal({ isOpen, onClose, onSubmit, defaultDate }) {
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(defaultDate || "");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [category, setCategory] = useState("tech");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
 
-  // Conditionally render nothing if the modal is closed
+  useEffect(() => {
+    if (defaultDate) {
+      setDate(defaultDate);
+    }
+  }, [defaultDate]);
+
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     onSubmit({
       title,
       date,
@@ -25,9 +29,9 @@ export default function CreateEventModal({ isOpen, onClose, onSubmit }) {
       location,
       description,
     });
-    // Reset form values (optional)
+
     setTitle("");
-    setDate("");
+    setDate(defaultDate || "");
     setStartTime("");
     setEndTime("");
     setCategory("tech");
